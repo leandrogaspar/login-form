@@ -1,9 +1,14 @@
 const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin'); //installed via npm
+
+// the path(s) that should be cleaned
+const pathsToClean = [
+  'dist'
+]
 
 module.exports = {
   entry: {
-    polyfills: './node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js',
-    index: './src/index.js'
+    index: './src/views/index/index.js'
   },
   mode: 'production',
   output: {
@@ -23,5 +28,8 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new CleanWebpackPlugin(pathsToClean)
+  ]
 }
