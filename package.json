@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "test": "./node_modules/karma/bin/karma start"
+    "test": "./node_modules/karma/bin/karma start",
+    "lint" : "./node_modules/.bin/eslint src/* --fix"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,9 @@
     "@babel/preset-env": "^7.1.0",
     "babel-loader": "^8.0.4",
     "clean-webpack-plugin": "^0.1.19",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "file-loader": "^2.0.0",
     "jasmine-core": "^3.2.1",
     "karma": "^3.0.0",
