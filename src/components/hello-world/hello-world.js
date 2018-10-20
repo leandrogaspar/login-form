@@ -10,7 +10,6 @@ export default class HelloWorld extends HTMLElement {
       <h1>Hello world!</h1>
     `;
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this.render();
   }
 }
 
