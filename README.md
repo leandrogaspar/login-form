@@ -1,47 +1,5 @@
 # Work at Olist Frontend
 
-[Olist](https://olist.com/) is a company that offers an integration platform
-for sellers and marketplaces allowing them to sell their products across
-multiple channels.
-
-The Olist [development team](https://engineering.olist.com/) consists of
-developers who love what they do. Our agile development processes and our
-search for the best development practices provide a great environment for
-professionals who like to create quality software in good company.
-
-We are always looking for good programmers who love to improve their work. We
-give preference to small teams with qualified professionals over large teams
-with average professionals.
-
-This repository contains a problem used to evaluate the candidate skills.
-It's important to notice that solving the problem is just a
-part of what will be evaluated. We also consider other programming disciplines
-like documentation, testing, commit timeline, design and coding best
-practices.
-
-Hints:
-
-* Carefully read the specification to understand all the problem and
-  artifact requirements before starting.
-* Check the recommendations and reference material at the end of this
-  specification.
-
-
-## How to participate
-
-* Make a fork of this repository on Github. If you aren't comfortable with
-   creating a public fork of this project, make a private repository
-   (gitlab offers free private repos) and add developer permission for the
-   user [@tech-hiring](https://gitlab.com/tech-hiring) on project;
-* Follow the instructions on README.md (this file);
-* Deploy your project on a host service (we recommend
-   [Heroku](https://heroku.com) or [Netlify](http://netlify.com/));
-* Apply for the position at our [career page](https://www.99jobs.com/olist)
-   with:
-   * Link to the fork on Github (or gitlab.com);
-   * Link to the project in the deployed host service.
-
-
 ## Specification
 
 Today, security is everything, but users still have the bad habit of creating
@@ -62,7 +20,6 @@ The design of the page can be found in the link below:
 
 * It's very important that you build this page exactly as proposed, pixel by
 pixel.
-
 
 ## Instructions
 
