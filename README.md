@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/leandrogaspar/work-at-olist-front.svg?branch=master)](https://travis-ci.org/leandrogaspar/work-at-olist-front)
+
 # Work at Olist Frontend
 
 ## Specification
