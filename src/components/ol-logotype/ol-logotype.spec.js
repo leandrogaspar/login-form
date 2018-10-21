@@ -11,11 +11,11 @@ describe('ol-logotype', () => {
     expect(root.querySelector('title').textContent).toBe('Olist');
   });
 
-  it('svg width is equals to 76', () => {
-    expect(root.querySelector('svg').getAttribute('width')).toBe('76');
+  it('svg width is equals to 88', () => {
+    expect(root.querySelector('svg').getAttribute('width')).toBe('88');
   });
 
-  it('svg height is equals to 30', () => {
-    expect(root.querySelector('svg').getAttribute('height')).toBe('30');
+  it('svg height is equals to 35', () => {
+    expect(root.querySelector('svg').getAttribute('height')).toBe('35');
   });
 });
