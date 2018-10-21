@@ -8,14 +8,14 @@ describe('ol-logotype', () => {
   });
 
   it('title should be olist', () => {
-    expect(root.querySelector('title').innerHTML).toBe('Olist');
+    expect(root.querySelector('title').textContent).toBe('Olist');
   });
 
   it('svg width is equals to 76', () => {
-    expect(root.querySelector('svg').getAttribute('width')).toEqual('76');
+    expect(root.querySelector('svg').getAttribute('width')).toBe('76');
   });
 
   it('svg height is equals to 30', () => {
-    expect(root.querySelector('svg').getAttribute('height')).toEqual('30');
+    expect(root.querySelector('svg').getAttribute('height')).toBe('30');
   });
 });
