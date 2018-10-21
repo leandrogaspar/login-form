@@ -12,7 +12,7 @@ export default class OlPasswordStrength extends HTMLElement {
       </style>
       <div class="wrapper">
         <label id="password-strength-label" for="password-strength-input" class="label">Senha</label>
-        <input type="text" name="name" id="password-strength-input" class="input">
+        <input type="password" name="name" id="password-strength-input" class="input">
       </div>
       <div class="wrapper-row indicator-row">
         <div id="indicator-1" class="indicator"></div>
