@@ -1,20 +1,21 @@
-const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin'); //installed via npm
+const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin'); // installed via npm
 
 // the path(s) that should be cleaned
 const pathsToClean = [
-  'dist'
-]
+  'dist',
+];
 
 module.exports = {
   entry: {
-    index: './src/views/index/index.js'
+    index: './src/views/index/index.js',
   },
   mode: 'production',
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -23,14 +24,14 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
-      { test: /\.jpg$/, use: ["file-loader"] },
-    ]
+      { test: /\.jpg$/, use: ['file-loader'] },
+    ],
   },
   plugins: [
-    new CleanWebpackPlugin(pathsToClean)
-  ]
-}
+    new CleanWebpackPlugin(pathsToClean),
+  ],
+};
