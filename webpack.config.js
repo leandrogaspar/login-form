@@ -29,6 +29,13 @@ module.exports = {
         },
       },
       { test: /\.jpg$/, use: ['file-loader'] },
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: 'css-loader' },
+          { loader: 'sass-loader' },
+        ],
+      },
     ],
   },
   plugins: [

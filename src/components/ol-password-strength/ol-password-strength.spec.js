@@ -19,14 +19,6 @@ describe('ol-password-strength', () => {
     expect(root.querySelector('input').classList.contains('invalid')).toBeFalsy();
   });
 
-  it('at start input does not have one-invalid class', () => {
-    expect(root.querySelector('input').classList.contains('one-invalid')).toBeFalsy();
-  });
-
-  it('at start input does not have two-invalid class', () => {
-    expect(root.querySelector('input').classList.contains('two-invalid')).toBeFalsy();
-  });
-
   it('must have a "Senha" label', () => {
     expect(root.querySelector('label').textContent).toBe('Senha');
   });
@@ -36,44 +28,95 @@ describe('ol-password-strength', () => {
       const input = root.querySelector('input');
       input.value = 'A2a45aa';
       input.dispatchEvent(new CustomEvent('change', {}));
-      expect(component.getAttribute('valid')).toBe('true');
       expect(root.querySelector('input').classList.contains('invalid')).toBeFalsy();
       expect(root.querySelector('input').classList.contains('valid')).toBeTruthy();
+    });
+
+    it('triggers an onChange event when you change the input with true isValid', (done) => {
+      const input = root.querySelector('input');
+      component.addEventListener('onChange', (event) => {
+        expect(event.detail).toEqual({
+          value: 'A2a45aa',
+          isValid: true,
+        });
+        done();
+      });
+
+      input.value = 'A2a45aa';
+      input.dispatchEvent(new CustomEvent('change'));
+    });
+
+    it('must set the rule-1 to valid if password has at least 6 char', () => {
+      const input = root.querySelector('input');
+      input.value = 'aaaaaa';
+      input.dispatchEvent(new CustomEvent('change', {}));
+      expect(root.getElementById('rule-1').classList.contains('valid')).toBeTruthy();
+      expect(root.querySelector('input').classList.contains('invalid')).toBeTruthy();
+      expect(root.querySelector('input').classList.contains('valid')).toBeFalsy();
+    });
+
+    it('must set the rule-2 to valid if password has at least one uppercase', () => {
+      const input = root.querySelector('input');
+      input.value = 'A';
+      input.dispatchEvent(new CustomEvent('change', {}));
+      expect(root.getElementById('rule-2').classList.contains('valid')).toBeTruthy();
+      expect(root.querySelector('input').classList.contains('invalid')).toBeTruthy();
+      expect(root.querySelector('input').classList.contains('valid')).toBeFalsy();
+    });
+
+    it('must set the rule-3 to valid if password has at least one number', () => {
+      const input = root.querySelector('input');
+      input.value = '1';
+      input.dispatchEvent(new CustomEvent('change', {}));
+      expect(root.getElementById('rule-3').classList.contains('valid')).toBeTruthy();
+      expect(root.querySelector('input').classList.contains('invalid')).toBeTruthy();
+      expect(root.querySelector('input').classList.contains('valid')).toBeFalsy();
     });
   });
 
   describe('invalid passwords', () => {
-    it('must be invalid if password does not have at least 6 chars', () => {
+    it('input and rule 1 must be invalid if password does not have at least 6 chars', () => {
       const input = root.querySelector('input');
       input.value = 'A2a45';
       input.dispatchEvent(new CustomEvent('change', {}));
-      expect(component.getAttribute('valid')).toBe('false');
       expect(root.querySelector('input').classList.contains('valid')).toBeFalsy();
       expect(root.querySelector('input').classList.contains('invalid')).toBeTruthy();
-      expect(root.getElementById('rule-1').classList.contains('invalid-rule')).toBeTruthy();
-      expect(root.getElementById('rule-1').classList.contains('valid-rule')).toBeFalsy();
+      expect(root.getElementById('rule-1').classList.contains('invalid')).toBeTruthy();
+      expect(root.getElementById('rule-1').classList.contains('valid')).toBeFalsy();
     });
 
-    it('must be invalid if password does not have at least one upper case char', () => {
+    it('input and rule 2 must be invalid if password does not have at least one upper case char', () => {
       const input = root.querySelector('input');
       input.value = 'a2a45afsafa%@!';
       input.dispatchEvent(new CustomEvent('change', {}));
-      expect(component.getAttribute('valid')).toBe('false');
       expect(root.querySelector('input').classList.contains('valid')).toBeFalsy();
       expect(root.querySelector('input').classList.contains('invalid')).toBeTruthy();
-      expect(root.getElementById('rule-2').classList.contains('invalid-rule')).toBeTruthy();
-      expect(root.getElementById('rule-2').classList.contains('valid-rule')).toBeFalsy();
+      expect(root.getElementById('rule-2').classList.contains('invalid')).toBeTruthy();
+      expect(root.getElementById('rule-2').classList.contains('valid')).toBeFalsy();
     });
 
-    it('must be invalid if password does not have at least one number', () => {
+    it('input and rule 3 must be invalid if password does not have at least one number', () => {
       const input = root.querySelector('input');
       input.value = 'aaaaaaaaaAAAAAAAAAAA';
       input.dispatchEvent(new CustomEvent('change', {}));
-      expect(component.getAttribute('valid')).toBe('false');
       expect(root.querySelector('input').classList.contains('valid')).toBeFalsy();
       expect(root.querySelector('input').classList.contains('invalid')).toBeTruthy();
-      expect(root.getElementById('rule-3').classList.contains('invalid-rule')).toBeTruthy();
-      expect(root.getElementById('rule-3').classList.contains('valid-rule')).toBeFalsy();
+      expect(root.getElementById('rule-3').classList.contains('invalid')).toBeTruthy();
+      expect(root.getElementById('rule-3').classList.contains('valid')).toBeFalsy();
+    });
+
+    it('triggers an onChange event when you change the input with false isValid', (done) => {
+      const input = root.querySelector('input');
+      component.addEventListener('onChange', (event) => {
+        expect(event.detail).toEqual({
+          value: 'Eita',
+          isValid: false,
+        });
+        done();
+      });
+
+      input.value = 'Eita';
+      input.dispatchEvent(new CustomEvent('change'));
     });
   });
 });

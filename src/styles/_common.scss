@@ -1,0 +1,51 @@
+@import '_variables';
+@import '_flexbox.scss';
+
+.default-font {
+  font-family: $default-font-stack;
+  font-size: $default-font-size;
+  line-height: $default-font-line-height;
+  font-weight: $default-font-weight;
+  color: $default-font-color;
+}
+
+.form-row {
+  @include flexbox();
+  @include flex-direction(column);
+
+  >.label {
+    margin-top: 24px;
+    @extend .default-font;
+  }
+
+  >.input {
+    height: 44px;
+
+    background: $olist-white;
+    border: 1px solid $olist-grey;
+    box-sizing: border-box;
+    box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.05);
+  
+    @extend .default-font;
+    font-family: Soleil;
+    text-indent: 16px;
+    color: $olist-black;
+  
+    outline: none;
+  
+    // Took some design liberty here.
+    // For accessibility we MUST indicate to
+    // the user when something is disabled
+    &:disabled {
+      background: $grey;
+    }
+  }
+
+  >.valid {
+    border: 1px solid $olist-green;
+  }
+
+  >.invalid {
+    border: 1px solid $olist-red;
+  }
+}

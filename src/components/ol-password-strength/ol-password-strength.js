@@ -1,158 +1,48 @@
-export default class OlPasswordStrength extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-  }
+import Component from '../component';
+import styles from './ol-password-strength.scss';
 
-  get componentTeplate() {
-    const template = document.createElement('template');
-    template.innerHTML = `
-      <style>
-        ${this.componentCss()}
-      </style>
-      <div class="wrapper">
+export default class OlPasswordStrength extends Component {
+  template() {
+    return `
+      <div class="form-row">
         <label id="password-strength-label" for="password-strength-input" class="label">Senha</label>
         <input type="password" name="name" id="password-strength-input" class="input">
       </div>
-      <div class="wrapper-row indicator-row">
+      <div class="indicator-row">
         <div id="indicator-1" class="indicator"></div>
         <div id="indicator-2" class="indicator"></div>
         <div id="indicator-3" class="indicator"></div>
       </div>
-      <div class="wrapper-row">
+      <div class="rule-row">
         <div id="rule-1" class="default-ellipse"></div>
         <span class="label rules">Pelo menos 6 caracteres</span>
       </div>
-      <div class="wrapper-row">
+      <div class="rule-row">
         <div id="rule-2" class="default-ellipse"></div>
         <span class="label rules">Pelo menos 1 letra maíuscula</span>
       </div>
-      <div class="wrapper-row last-row">
+      <div class="rule-row last-rule-row" >
         <div id="rule-3" class="default-ellipse"></div>
         <span class="label rules">Pelo menos 1 número</span>
       </div>
     `;
-    return template;
   }
 
-  componentCss() {
-    this.componentCss = `
-    .wrapper {
-      display: -webkit-flex;
-      display: -ms-flex;
-      display: flex;label
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-    }
-
-    .wrapper-row {
-      display: -webkit-flex;
-      display: -ms-flex;
-      display: flex;label
-      -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-      flex-direction: row;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .last-row {
-      margin-bottom: 24px;
-    }
-
-    .label {
-      font-family: SF Pro Text;
-      line-height: 26px;
-      font-size: 16px;
-      color: #696D8C;
-    }
-
-    .input {
-      margin-bottom: 8px;
-      height: 44px;
-      background: #FFFFFF;
-      border: 1px solid #B6B9D0;
-      box-sizing: border-box;
-      box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.05);
-      font-family: Soleil;
-      line-height: 26px;
-      font-size: 16px;
-      text-indent: 16px;
-      color: #312F4F;
-      outline: none;
-    }
-
-    .valid {
-      border: 1px solid #17D499;
-    }
-
-    .invalid {
-      border: 1px solid #F79682;
-    }
-
-    .default-ellipse {
-      width: 10px;
-      height: 10px;
-      background: #EAEAF4;
-      border-radius: 50%;
-    }
-
-    .rules {
-      line-height: 16px;
-      margin-top: 0px;
-      margin-bottom: 0px;
-      margin-left: 7px;
-    }
-
-    .indicator-row {
-      justify-content: space-between;
-      margin-bottom: 16px;
-    }
-
-    .indicator {
-      background: #EAEAF4;
-      border-radius: 10px;
-      width: 32%;
-      height: 8px;
-    }
-
-    .valid-indicator {
-      background: #1FE6A8;
-    }
-
-    .one-invalid-indicator {
-      background: #F7BC1C;
-    }
-
-    .two-invalid-indicator {
-      background: #F79682;
-    }
-
-    .valid-rule {
-      background: #1FE6A8;
-    }
-
-    .invalid-rule {
-      background: #F79682;
-    }
-    `;
-    return this.componentCss;
+  styles() {
+    return styles;
   }
 
-  connectedCallback() {
-    // First, add our label and input to the shadowDOM
-    this.shadowRoot.appendChild(this.componentTeplate.content.cloneNode(true));
-
+  onConnected() {
     // Create references to our elements
-    this.labelElement = this.shadowRoot.querySelector('label');
     this.inputElement = this.shadowRoot.querySelector('input');
     this.indicatorOne = this.shadowRoot.getElementById('indicator-1');
     this.indicatorTwo = this.shadowRoot.getElementById('indicator-2');
     this.indicatorThree = this.shadowRoot.getElementById('indicator-3');
-    this.ruleOne = this.shadowRoot.getElementById('rule-1');
-    this.ruleTwo = this.shadowRoot.getElementById('rule-2');
-    this.ruleThree = this.shadowRoot.getElementById('rule-3');
+
+    //https://www.youtube.com/watch?v=k2qgadSvNyU
+    this.ruleOne = this.shadowRoot.getElementById('rule-1'); //Don't pick up the phone
+    this.ruleTwo = this.shadowRoot.getElementById('rule-2'); //Don't let him in
+    this.ruleThree = this.shadowRoot.getElementById('rule-3'); //Don't be his friend
 
     // Now, let's add our listeners
     this.inputElement.addEventListener('change', this.onInputChange.bind(this));
@@ -166,14 +56,16 @@ export default class OlPasswordStrength extends HTMLElement {
   }
 
   onInputChange() {
-    // First do our validation log then update the component
+    // First do our validation then update the component
     this.validatePassword();
     this.updateComponent();
 
     // Dispatch the change as our custom event
     this.dispatchEvent(new CustomEvent('onChange', {
-      value: this.inputElement.value,
-      isValid: this.inValidFieldsCount === 0,
+      detail: {
+        value: this.inputElement.value,
+        isValid: this.inValidFieldsCount === 0
+      }
     }));
   }
 
@@ -188,8 +80,6 @@ export default class OlPasswordStrength extends HTMLElement {
     if (this.hasSixChar) { this.decreaseInvalidFieldsCount(); }
     if (this.hasUpperCase) { this.decreaseInvalidFieldsCount(); }
     if (this.hasNumber) { this.decreaseInvalidFieldsCount(); }
-
-    this.setAttribute('valid', this.inValidFieldsCount === 0);
   }
 
   decreaseInvalidFieldsCount() {
@@ -198,8 +88,8 @@ export default class OlPasswordStrength extends HTMLElement {
 
   updateComponent() {
     this.updateInputElement();
-    this.updateIndicators();
-    this.updateRules();
+    this.updateIndicatorsClasses();
+    this.updateRulesClasses();
   }
 
   updateInputElement() {
@@ -212,7 +102,7 @@ export default class OlPasswordStrength extends HTMLElement {
     }
   }
 
-  updateIndicators() {
+  updateIndicatorsClasses() {
     // Reset everybody
     this.indicatorOne.classList.remove('valid-indicator', 'one-invalid-indicator', 'two-invalid-indicator');
     this.indicatorTwo.classList.remove('valid-indicator', 'one-invalid-indicator', 'two-invalid-indicator');
@@ -237,27 +127,27 @@ export default class OlPasswordStrength extends HTMLElement {
     }
   }
 
-  updateRules() {
-    this.ruleOne.classList.remove('valid-rule', 'invalid-rule');
-    this.ruleTwo.classList.remove('valid-rule', 'invalid-rule');
-    this.ruleThree.classList.remove('valid-rule', 'invalid-rule');
+  updateRulesClasses() {
+    this.ruleOne.classList.remove('valid', 'invalid');
+    this.ruleTwo.classList.remove('valid', 'invalid');
+    this.ruleThree.classList.remove('valid', 'invalid');
 
     if (this.hasSixChar) {
-      this.ruleOne.classList.add('valid-rule');
+      this.ruleOne.classList.add('valid');
     } else {
-      this.ruleOne.classList.add('invalid-rule');
+      this.ruleOne.classList.add('invalid');
     }
 
     if (this.hasUpperCase) {
-      this.ruleTwo.classList.add('valid-rule');
+      this.ruleTwo.classList.add('valid');
     } else {
-      this.ruleTwo.classList.add('invalid-rule');
+      this.ruleTwo.classList.add('invalid');
     }
 
     if (this.hasNumber) {
-      this.ruleThree.classList.add('valid-rule');
+      this.ruleThree.classList.add('valid');
     } else {
-      this.ruleThree.classList.add('invalid-rule');
+      this.ruleThree.classList.add('invalid');
     }
   }
 }

@@ -25,9 +25,25 @@ describe('ol-button', () => {
     expect(root.getElementById(buttonId).disabled).toBeFalsy();
   });
 
-  it('button can be disabled passin "disabled" attribute', () => {
+  it('button can be disabled using the "disabled" attribute on the creation', () => {
     component = fixture(`<ol-button buttonId="${buttonId}" label="${label}" disabled="disabled"></ol-button>`);
     root = component.shadowRoot;
     expect(root.getElementById(buttonId).disabled).toBeTruthy();
+  });
+
+  it('button can be disabled by setting the "disabled" attribute', () => {
+    component = fixture(`<ol-button buttonId="${buttonId}" label="${label}"></ol-button>`);
+    root = component.shadowRoot;
+    component.setAttribute('disabled', 'disabled');
+    expect(root.getElementById(buttonId).disabled).toBeTruthy();
+  });
+
+  it('triggers an onClick event when clicked', (done) => {
+    const button = root.querySelector('button');
+    component.addEventListener('onClick', (event) => {
+      expect(event.detail).toBe(buttonId);
+      done();
+    });
+    button.click();
   });
 });

@@ -6,5 +6,8 @@ module.exports = {
     },
     "globals": {
         "fixture": true
+    },
+    "rules": {
+        "class-methods-use-this": false
     }
 };

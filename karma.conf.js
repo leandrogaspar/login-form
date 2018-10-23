@@ -47,7 +47,14 @@ module.exports = function (config) {
                 presets: ['@babel/preset-env']
               }
             }
-          }
+          },
+          {
+            test: /\.scss$/,
+            use: [
+              { loader: 'css-loader' },
+              { loader: 'sass-loader' },
+            ],
+          },
         ]
       }
     },
