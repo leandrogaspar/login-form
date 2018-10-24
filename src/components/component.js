@@ -31,7 +31,7 @@ export default class Component extends HTMLElement {
   /**
    * Invoked each time the custom element is disconnected from the document's DOM.
    */
-  onDisconnected() { }
+  onDestroy() { }
 
   connectedCallback() {
     this.createTemplate();
@@ -42,7 +42,7 @@ export default class Component extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this.onDisconnected();
+    this.onDestroy();
   }
 
   attributeChangedCallback(name, oldValue, newValue) {

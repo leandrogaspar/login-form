@@ -2,66 +2,84 @@
 [![dependencies Status](https://david-dm.org/leandrogaspar/work-at-olist-front/status.svg)](https://david-dm.org/leandrogaspar/work-at-olist-front)
 [![devDependencies Status](https://david-dm.org/leandrogaspar/work-at-olist-front/dev-status.svg)](https://david-dm.org/leandrogaspar/work-at-olist-front?type=dev)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7560336c203482768061/maintainability)](https://codeclimate.com/github/leandrogaspar/work-at-olist-front/maintainability)
-[![Maintainability](https://api.codeclimate.com/v1/badges/7560336c203482768061/maintainability)](https://codeclimate.com/github/leandrogaspar/work-at-olist-front/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7560336c203482768061/test_coverage)](https://codeclimate.com/github/leandrogaspar/work-at-olist-front/test_coverage)
 
-# Work at Olist Frontend
+# The Most Amazing New Account Form Ever Made
+> Also (not)known as a simple Sign Up form using [Shadow DOM v1](https://developers.google.com/web/fundamentals/web-components/shadowdom) spec.
 
-## Specification
+## Getting started
 
-Today, security is everything, but users still have the bad habit of creating
-accounts with weak passwords, and it is essential that we can offer the user
-ways to keep them safe. So, we must do our best to ensure the safety of our
-users.
+## Installing
 
-For this, you should implement a **new account** page, composed of Name, Email
-and Password with a strength measure indicator and Password confirmation. All
-these fields are required.
+Download and install the latest LTS version of [node](https://nodejs.org/en/download/), open a shell and run: 
 
+```shell
+npm install
+npm run build
+```
 
-## Style Guide
+You will find the build with all the needed files on the dist folder. After this you can either serve the files on a HTTP server or simply open the HTML with a browser.
 
-The design of the page can be found in the link below:
+## Making a simple Component
 
-[Front-End Test Style Guide](https://www.figma.com/file/rsSlx8jDHls6nWXziElWTk/olist----front-end-test)
+### Components
 
-* It's very important that you build this page exactly as proposed, pixel by
-pixel.
+Components are simple ES6 classes that extends the base Component class. This base class provide simple methods that make the implementation a little bit easier.
 
-## Instructions
+```js
+/**
+ * You can return your template as string here, think react render :)
+ */
+template() { return '<p>Amazing!</p>'; }
 
-* The submit button must be disabled until the form is valid.
-* The Name is required and Email must be a valid email.
-* The invalid input fields should have a border color like the style guide.
-* The valid input fields should have a border color like the style guide.
-* The Password input must make use of the sequence of validation presented in
-  the Style Guide
-* If the form is valid, the submit button should be clickable
-* When the form is submitted, it should present a loading status.
+/**
+ * Return your css as string here
+ */
+styles() { return 'p { color: blue; }'; }
 
+/**
+ * Invoked each time the template is connected to the template.
+ */
+onConnected() { }
 
-## Project Requirements:
+/**
+ * Invoked each time the custom element is destroyed from the document's DOM.
+ */
+onDestroy() { }
+```
 
-* Application must be written in HTML, JavaScript and CSS. You can only make
-  use of a CSS preprocessor.
-* You cannot use any Javascript library or framework with the exception of
-  polyfills.
-* Your page must support all modern browsers and IE 11+.
-* Write the project documentation containing: [Sample](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md)
-  * Installing and testing instructions;
-  * Brief description of the work environment used to run this
-    project (Computer/operating system, text editor/IDE, libraries, etc).
-* Every text or code must be in English.
+### The code
 
+The HelloGuy component will receive a attribute "guy" and render it inside a h1 tag. The attribute must be returned on the list provided by the observedAttributes method to trigger a component render.
 
-## Recommendations
+```js
+//hello.js
+import Component from '../component';
 
-* Write tests!
-* Use [SOLID](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)), [KISS](https://en.wikipedia.org/wiki/KISS_principle), [YAGNI](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it) and [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
-* Use programming good practices;
-* Use [git best practices](https://www.git-tower.com/learn/git/ebook/en/command-line/appendix/best-practices),
-  with clear messages (written in English);
-* If you build this with Web Components it will be a plus.
-* Feel free to use any language to serve the page if you need. Using Python,
-  Go or Elixir is a plus.
+export default class HelloGuy extends Component {
+  static get observedAttributes() { return ['guy'] }
 
-**Have fun!**
+  template() {
+    return `<h1>Hello, ${this.guy}</h1>`;
+  }
+
+  get guy() { return this.getAttribute('guy'); }
+}
+customElements.define('hello-guy', HelloGuy);
+```
+
+You can now use your custom component by the tag configured on customElements.define.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hello World!</title>
+  <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
+  <script src="hello.js"></script> <!-- The-->
+</head>
+<body>
+  <hello-guy guy="Leandro"></hello-guy>
+</body>
+</html>
+```
