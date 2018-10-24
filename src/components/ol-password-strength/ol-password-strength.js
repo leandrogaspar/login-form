@@ -102,27 +102,32 @@ export default class OlPasswordStrength extends Component {
     }
   }
 
-  updateIndicatorsClasses() {
-    // Reset everybody
-    this.indicatorOne.classList.remove('valid-indicator', 'one-invalid-indicator', 'two-invalid-indicator');
-    this.indicatorTwo.classList.remove('valid-indicator', 'one-invalid-indicator', 'two-invalid-indicator');
-    this.indicatorThree.classList.remove('valid-indicator', 'one-invalid-indicator', 'two-invalid-indicator');
+  setIndicatorClass(indicator, className) {
+    indicator.className = 'indicator ' + className;
+  }
 
+  updateIndicatorsClasses() {
     // Now set the classes again
     switch (this.inValidFieldsCount) {
       case 0:
-        this.indicatorOne.classList.add('valid-indicator');
-        this.indicatorTwo.classList.add('valid-indicator');
-        this.indicatorThree.classList.add('valid-indicator');
+        this.setIndicatorClass(this.indicatorOne, 'valid-indicator');
+        this.setIndicatorClass(this.indicatorTwo, 'valid-indicator');
+        this.setIndicatorClass(this.indicatorThree, 'valid-indicator');
         break;
       case 1:
-        this.indicatorOne.classList.add('one-invalid-indicator');
-        this.indicatorTwo.classList.add('one-invalid-indicator');
+        this.setIndicatorClass(this.indicatorOne, 'one-invalid-indicator');
+        this.setIndicatorClass(this.indicatorTwo, 'one-invalid-indicator');
+        this.setIndicatorClass(this.indicatorThree, '');
         break;
       case 2:
-        this.indicatorOne.classList.add('two-invalid-indicator');
+        this.setIndicatorClass(this.indicatorOne, 'two-invalid-indicator');
+        this.setIndicatorClass(this.indicatorTwo, '');
+        this.setIndicatorClass(this.indicatorThree, '');
         break;
       default:
+        this.setIndicatorClass(this.indicatorOne, '');
+        this.setIndicatorClass(this.indicatorTwo, '');
+        this.setIndicatorClass(this.indicatorThree, '');
         break;
     }
   }
