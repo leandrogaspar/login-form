@@ -49,3 +49,22 @@
     border: 1px solid $olist-red;
   }
 }
+
+.modal {
+  width: 100%;
+  max-width: 515px;
+  border: 3px solid $olist-lightest-grey;
+  box-sizing: border-box;
+  background-color: $olist-white;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  @include flexbox();
+  @include flex-direction(column);
+  @include align-items(center);
+
+  padding: 60px 70px 48px 70px;
+}

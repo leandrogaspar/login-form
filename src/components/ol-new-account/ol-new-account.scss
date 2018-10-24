@@ -1,0 +1,15 @@
+@import '../../styles/main';
+
+ol-input-text,
+ol-password-strength,
+ol-button {
+  width: 100%;
+}
+
+.create-account-h1 {
+  @extend .default-font;
+  font-size: 22px;
+  color: $olist-black;
+  margin-bottom: 8px;
+  margin-top: 24px;
+}

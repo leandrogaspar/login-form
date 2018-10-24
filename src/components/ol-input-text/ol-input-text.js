@@ -8,7 +8,7 @@ export default class OlInputText extends Component {
     return `
       <div class="form-row">
         <label id="${this.name}-label" for="${this.name}-input" class="label">${this.label}</label>
-        <input type="text" name="${this.name}" id="${this.name}-input" class="input" ${this.disabled}>
+        <input type="text" name="${this.name}" id="${this.name}-input" class="input" ${this.disabled} value="${this.value}">
       </div>`;
   }
 
@@ -24,9 +24,16 @@ export default class OlInputText extends Component {
     // Now, listen to changes
     this.inputElement.addEventListener('change', this.onInputChange.bind(this));
     this.inputElement.addEventListener('keyup', this.onInputChange.bind(this));
+
+    if (this.dirty) {
+      this.onInputChange();
+    }
   }
 
   onInputChange() {
+    this.dirty = true;
+    this.value = this.inputElement.value;
+
     const valid = this.isValid();
     this.setInputValidClass(valid);
 
@@ -34,7 +41,7 @@ export default class OlInputText extends Component {
     this.dispatchEvent(new CustomEvent('onChange', {
       detail: {
         name: this.name,
-        value: this.inputElement.value,
+        value: this.value,
         isValid: valid,
       }
     }));
@@ -42,7 +49,7 @@ export default class OlInputText extends Component {
 
   isValid() {
     const regex = new RegExp(this.validator);
-    return regex.test(this.inputElement.value);
+    return regex.test(this.value);
   }
 
   setInputValidClass(valid) {
@@ -54,6 +61,10 @@ export default class OlInputText extends Component {
       this.inputElement.classList.remove('valid');
     }
   }
+
+  set value(value) { this.oldValue = value; }
+
+  get value() { return this.oldValue || ''; }
 
   get name() { return this.getAttribute('name'); }
 
