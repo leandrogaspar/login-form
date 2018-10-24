@@ -27,7 +27,7 @@ describe('ol-password-strength', () => {
   const checkRuleIndicator = function (rule, inputText, validRule, validInput) {
     const ruleClass = validRule ? 'valid-rule' : 'invalid-rule';
     checkInput(validInput, inputText);
-    expect(root.getElementById(rule).className).toBe(ruleClass);
+    expect(root.getElementById(rule).classList.contains(ruleClass)).toBeTruthy();
   }
 
   beforeEach(() => {
