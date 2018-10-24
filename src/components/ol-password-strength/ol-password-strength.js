@@ -14,15 +14,15 @@ export default class OlPasswordStrength extends Component {
         <div id="indicator-3" class="indicator"></div>
       </div>
       <div class="rule-row">
-        <div id="rule-1" class="default-ellipse"></div>
+        <div id="rule-1" class="default-rule"></div>
         <span class="label rules">Pelo menos 6 caracteres</span>
       </div>
       <div class="rule-row">
-        <div id="rule-2" class="default-ellipse"></div>
+        <div id="rule-2" class="default-rule"></div>
         <span class="label rules">Pelo menos 1 letra maíuscula</span>
       </div>
       <div class="rule-row last-rule-row" >
-        <div id="rule-3" class="default-ellipse"></div>
+        <div id="rule-3" class="default-rule"></div>
         <span class="label rules">Pelo menos 1 número</span>
       </div>
     `;
@@ -128,26 +128,16 @@ export default class OlPasswordStrength extends Component {
   }
 
   updateRulesClasses() {
-    this.ruleOne.classList.remove('valid', 'invalid');
-    this.ruleTwo.classList.remove('valid', 'invalid');
-    this.ruleThree.classList.remove('valid', 'invalid');
+    this.updateRule(this.hasSixChar, this.ruleOne);
+    this.updateRule(this.hasUpperCase, this.ruleTwo);
+    this.updateRule(this.hasNumber, this.ruleThree);
+  }
 
-    if (this.hasSixChar) {
-      this.ruleOne.classList.add('valid');
+  updateRule(valid, rule) {
+    if (valid) {
+      rule.className = 'valid-rule';
     } else {
-      this.ruleOne.classList.add('invalid');
-    }
-
-    if (this.hasUpperCase) {
-      this.ruleTwo.classList.add('valid');
-    } else {
-      this.ruleTwo.classList.add('invalid');
-    }
-
-    if (this.hasNumber) {
-      this.ruleThree.classList.add('valid');
-    } else {
-      this.ruleThree.classList.add('invalid');
+      rule.className = 'invalid-rule';
     }
   }
 }
