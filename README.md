@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/leandrogaspar/work-at-olist-front.svg?branch=master)](https://travis-ci.org/leandrogaspar/work-at-olist-front)
 [![dependencies Status](https://david-dm.org/leandrogaspar/work-at-olist-front/status.svg)](https://david-dm.org/leandrogaspar/work-at-olist-front)
 [![devDependencies Status](https://david-dm.org/leandrogaspar/work-at-olist-front/dev-status.svg)](https://david-dm.org/leandrogaspar/work-at-olist-front?type=dev)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7560336c203482768061/maintainability)](https://codeclimate.com/github/leandrogaspar/work-at-olist-front/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7560336c203482768061/maintainability)](https://codeclimate.com/github/leandrogaspar/work-at-olist-front/maintainability)
 
 # Work at Olist Frontend
 
