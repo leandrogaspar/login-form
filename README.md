@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/leandrogaspar/work-at-olist-front.svg?branch=master)](https://travis-ci.org/leandrogaspar/work-at-olist-front)
+[![dependencies Status](https://david-dm.org/leandrogaspar/work-at-olist-front/status.svg)](https://david-dm.org/leandrogaspar/work-at-olist-front)
+[![devDependencies Status](https://david-dm.org/leandrogaspar/work-at-olist-front/dev-status.svg)](https://david-dm.org/leandrogaspar/work-at-olist-front?type=dev)
 
 # Work at Olist Frontend
 
