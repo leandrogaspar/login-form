@@ -2,7 +2,7 @@ import Component from '../component';
 import styles from './ol-button.scss';
 
 export default class OlButton extends Component {
-  static get observedAttributes() { return ['buttonId', 'disabled', 'label'] }
+  static get observedAttributes() { return ['buttonId', 'disabled', 'label']; }
 
   template() {
     return `<button id="${this.buttonId}" class="button" ${this.disabled}>${this.label}</button>`;

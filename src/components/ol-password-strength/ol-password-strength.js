@@ -39,10 +39,10 @@ export default class OlPasswordStrength extends Component {
     this.indicatorTwo = this.shadowRoot.getElementById('indicator-2');
     this.indicatorThree = this.shadowRoot.getElementById('indicator-3');
 
-    //https://www.youtube.com/watch?v=k2qgadSvNyU
-    this.ruleOne = this.shadowRoot.getElementById('rule-1'); //Don't pick up the phone
-    this.ruleTwo = this.shadowRoot.getElementById('rule-2'); //Don't let him in
-    this.ruleThree = this.shadowRoot.getElementById('rule-3'); //Don't be his friend
+    // https://www.youtube.com/watch?v=k2qgadSvNyU
+    this.ruleOne = this.shadowRoot.getElementById('rule-1'); // Don't pick up the phone
+    this.ruleTwo = this.shadowRoot.getElementById('rule-2'); // Don't let him in
+    this.ruleThree = this.shadowRoot.getElementById('rule-3'); // Don't be his friend
 
     // Now, let's add our listeners
     this.inputElement.addEventListener('change', this.onInputChange.bind(this));
@@ -64,8 +64,8 @@ export default class OlPasswordStrength extends Component {
     this.dispatchEvent(new CustomEvent('onChange', {
       detail: {
         value: this.inputElement.value,
-        isValid: this.inValidFieldsCount === 0
-      }
+        isValid: this.inValidFieldsCount === 0,
+      },
     }));
   }
 
@@ -102,48 +102,43 @@ export default class OlPasswordStrength extends Component {
     }
   }
 
-  setIndicatorClass(indicator, className) {
-    indicator.className = 'indicator ' + className;
-  }
-
   updateIndicatorsClasses() {
     // Now set the classes again
     switch (this.inValidFieldsCount) {
       case 0:
-        this.setIndicatorClass(this.indicatorOne, 'valid-indicator');
-        this.setIndicatorClass(this.indicatorTwo, 'valid-indicator');
-        this.setIndicatorClass(this.indicatorThree, 'valid-indicator');
+        this.indicatorOne.className = 'indicator valid-indicator';
+        this.indicatorTwo.className = 'indicator valid-indicator';
+        this.indicatorThree.className = 'indicator valid-indicator';
         break;
       case 1:
-        this.setIndicatorClass(this.indicatorOne, 'one-invalid-indicator');
-        this.setIndicatorClass(this.indicatorTwo, 'one-invalid-indicator');
-        this.setIndicatorClass(this.indicatorThree, '');
+        this.indicatorOne.className = 'indicator one-invalid-indicator';
+        this.indicatorTwo.className = 'indicator one-invalid-indicator';
+        this.indicatorThree.className = 'indicator';
         break;
       case 2:
-        this.setIndicatorClass(this.indicatorOne, 'two-invalid-indicator');
-        this.setIndicatorClass(this.indicatorTwo, '');
-        this.setIndicatorClass(this.indicatorThree, '');
+        this.indicatorOne.className = 'indicator two-invalid-indicator';
+        this.indicatorTwo.className = 'indicator';
+        this.indicatorThree.className = 'indicator';
         break;
       default:
-        this.setIndicatorClass(this.indicatorOne, '');
-        this.setIndicatorClass(this.indicatorTwo, '');
-        this.setIndicatorClass(this.indicatorThree, '');
+        this.indicatorOne.className = 'indicator';
+        this.indicatorTwo.className = 'indicator';
+        this.indicatorThree.className = 'indicator';
         break;
     }
   }
 
   updateRulesClasses() {
-    this.updateRule(this.hasSixChar, this.ruleOne);
-    this.updateRule(this.hasUpperCase, this.ruleTwo);
-    this.updateRule(this.hasNumber, this.ruleThree);
+    this.ruleOne.className = this.getValidRule(this.hasSixChar);
+    this.ruleTwo.className = this.getValidRule(this.hasUpperCase);
+    this.ruleThree.className = this.getValidRule(this.hasNumber);
   }
 
-  updateRule(valid, rule) {
+  getValidRule(valid) {
     if (valid) {
-      rule.className = 'valid-rule';
-    } else {
-      rule.className = 'invalid-rule';
+      return 'valid-rule';
     }
+    return 'invalid-rule';
   }
 }
 

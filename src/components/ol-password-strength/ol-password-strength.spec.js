@@ -6,7 +6,7 @@ describe('ol-password-strength', () => {
    * Set the inputText on the Senha field and check if the inputElement
    * has a 'valid' or 'invalid' class
    */
-  const checkInput = function (valid, inputText) {
+  function checkInput(valid, inputText) {
     if (inputText) {
       const input = root.querySelector('input');
       input.value = inputText;
@@ -24,7 +24,7 @@ describe('ol-password-strength', () => {
   /**
    * Checks both the rule and input classes
    */
-  const checkRuleIndicator = function (rule, inputText, validRule, validInput) {
+  function checkRuleIndicator(rule, inputText, validRule, validInput) {
     const ruleClass = validRule ? 'valid-rule' : 'invalid-rule';
     checkInput(validInput, inputText);
     expect(root.getElementById(rule).classList.contains(ruleClass)).toBeTruthy();

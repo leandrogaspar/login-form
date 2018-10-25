@@ -1,11 +1,6 @@
 import Component from '../component';
 import styles from './ol-new-account.scss';
 
-// import OlButton from '../ol-button';
-// import OlInputText from '../ol-input-text';
-// import OlPasswordStrength from '../ol-password-strength';
-// import OlLogotype from '../ol-logotype';
-
 export default class OlNewAccount extends Component {
   constructor() {
     super();
@@ -20,7 +15,7 @@ export default class OlNewAccount extends Component {
 
   template() {
     return `
-      <form class="modal">
+      <div class="modal" role="form">
         <ol-logotype></ol-logotype>
         <h1 class="create-account-h1">Crie sua conta</h1>
         <ol-input-text id="name" label="Nome completo" baseId="name" validator="^.{6,}$"></ol-input-text>
@@ -28,7 +23,7 @@ export default class OlNewAccount extends Component {
         <ol-password-strength id="password-strength"></ol-password-strength>
         <ol-input-text id="confirm-password" label="Confirme sua senha" baseId="confirmPassword" validator="."></ol-input-text>
         <ol-button id="submit" label="Criar conta" buttonId="create-account" disabled="disabled"></ol-button>
-      </form>
+      </div>
     `;
   }
 
