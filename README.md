@@ -20,6 +20,15 @@ npm run build
 
 You will find the build with all the needed files on the dist folder. After this you can either serve the files on a HTTP server or simply open the HTML with a browser.
 
+## Tests
+
+Right now there are only unit tests. You will need to have updated versions from both Chrome and Firefox for the dev-test script. The test will start the browsers in headless mode and will run everytime you update a file. If needed, you will find the coverage files on the base dir.
+
+```shell
+npm install
+npm run dev-test
+```
+
 ## Making a simple Component
 
 ### Components
