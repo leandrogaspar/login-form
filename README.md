@@ -40,12 +40,12 @@ styles() { return 'p { color: blue; }'; }
 /**
  * Invoked each time the template is connected to the template.
  */
-onConnected() { }
+onConnected() { console.log('How about setting some event listeners here, for click maybe?'); }
 
 /**
  * Invoked each time the custom element is destroyed from the document's DOM.
  */
-onDestroy() { }
+onDestroyed() { console.log(`Nice place to do some cleanup, don't you think?`); }
 ```
 
 ### The code
