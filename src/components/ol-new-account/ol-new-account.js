@@ -38,24 +38,24 @@ export default class OlNewAccount extends Component {
     this.confirmPassword = this.shadowRoot.getElementById('confirm-password');
     this.submitButton = this.shadowRoot.getElementById('submit');
 
-    this.name.addEventListener('onChange', (event) => {
-      this.isValidName = event.detail.isValid;
-      this.updateForm();
-    });
-
-    this.email.addEventListener('onChange', (event) => {
-      this.isValidEmail = event.detail.isValid;
-      this.updateForm();
-    });
+    this.addValidityListener(this.confirmPassword, 'onChange', 'isValidPassword');
+    this.addValidityListener(this.email, 'onChange', 'isValidEmail');
+    this.addValidityListener(this.name, 'onChange', 'isValidName');
 
     this.passwordStrength.addEventListener('onChange', (event) => {
       const escapedValue = event.detail.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       this.confirmPassword.setAttribute('validator', `^${escapedValue}$`);
       this.updateForm();
     });
+  }
 
-    this.confirmPassword.addEventListener('onChange', (event) => {
-      this.isValidPassword = event.detail.isValid;
+  /**
+   * Add a listener in the elemen to the event.
+   * Set the validFlag using the event detail
+   */
+  addValidityListener(element, event, validFlag) {
+    element.addEventListener(event, (e) => {
+      this[validFlag] = e.detail.isValid;
       this.updateForm();
     });
   }
