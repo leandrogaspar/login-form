@@ -8,6 +8,6 @@ module.exports = {
         "fixture": true
     },
     "rules": {
-        "class-methods-use-this": false
+        "class-methods-use-this": 0
     }
 };
