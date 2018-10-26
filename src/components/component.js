@@ -46,6 +46,9 @@ export default class Component extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue === newValue) {
+      return;
+    }
     this.connectTemplate();
   }
 
