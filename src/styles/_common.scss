@@ -50,13 +50,6 @@ p {
     color: $olist-black;
   
     outline: none;
-  
-    // Took some design liberty here.
-    // For accessibility we MUST indicate to
-    // the user when something is disabled
-    &:disabled {
-      background: $grey;
-    }
   }
 
   >.valid {

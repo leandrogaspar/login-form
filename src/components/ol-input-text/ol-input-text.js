@@ -2,13 +2,13 @@ import Component from '../component';
 import styles from './ol-input-text.scss';
 
 export default class OlInputText extends Component {
-  static get observedAttributes() { return ['name', 'disabled', 'label', 'validator']; }
+  static get observedAttributes() { return ['name', 'disabled', 'label', 'validator', 'type']; }
 
   template() {
     return `
       <div class="form-row">
         <label id="${this.name}-label" for="${this.name}-input" class="label">${this.label}</label>
-        <input type="text" name="${this.name}" id="${this.name}-input" class="input" ${this.disabled} value="${this.value}">
+        <input type="${this.type}" name="${this.name}" id="${this.name}-input" class="input" ${this.disabled} value="${this.value}">
       </div>`;
   }
 
@@ -24,26 +24,25 @@ export default class OlInputText extends Component {
     // Now, listen to changes
     this.inputElement.addEventListener('change', this.onInputChange.bind(this));
     this.inputElement.addEventListener('keyup', this.onInputChange.bind(this));
+  }
 
-    if (this.dirty) {
-      this.onInputChange();
-    }
+  updateInput() {
+    this.value = this.inputElement.value;
+
+    this.valid = this.isValid();
+    this.setInputValidClass(this.valid);
   }
 
   onInputChange() {
-    this.dirty = true;
-    this.value = this.inputElement.value;
-
-    const valid = this.isValid();
-    this.setInputValidClass(valid);
+    this.updateInput();
 
     // Dispatch the change as our custom event
     this.dispatchEvent(new CustomEvent('onChange', {
       detail: {
         name: this.name,
         value: this.value,
-        isValid: valid,
-      }
+        isValid: this.valid,
+      },
     }));
   }
 
@@ -73,6 +72,8 @@ export default class OlInputText extends Component {
   get validator() { return this.getAttribute('validator') || '.'; }
 
   get disabled() { return this.getAttribute('disabled') || ''; }
+
+  get type() { return this.getAttribute('type') || 'text'; }
 }
 
 customElements.define('ol-input-text', OlInputText);
