@@ -1,11 +1,20 @@
 @import '_variables';
 @import '_flexbox.scss';
 
+.default-font {
+  font-family: $default-font-stack;
+  font-size: $default-font-size;
+  line-height: $default-font-line-height;
+  font-weight: $default-font-weight;
+  color: $default-font-color;
+}
+
 h1{
   @extend .default-font;
   font-size: 22px;
+  line-height: 31px;
   color: $olist-black;
-  font-weight: medium;
+  font-weight: bold;
   margin-bottom: 8px;
   margin-top: 24px;
 }
@@ -14,17 +23,7 @@ p {
   @extend .default-font;
   font-size: 16px;
   color: $olist-black;
-  font-weight: regular;
   margin-top: 13px;
-}
-
-
-.default-font {
-  font-family: $default-font-stack;
-  font-size: $default-font-size;
-  line-height: $default-font-line-height;
-  font-weight: $default-font-weight;
-  color: $default-font-color;
 }
 
 .form-row {
@@ -45,7 +44,6 @@ p {
     box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.05);
   
     @extend .default-font;
-    font-family: Soleil;
     text-indent: 16px;
     color: $olist-black;
   
