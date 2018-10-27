@@ -1,1 +1,1 @@
-export { default } from './ol-button'
+export { default } from './ol-button';

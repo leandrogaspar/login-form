@@ -38,6 +38,11 @@ describe('ol-button', () => {
     expect(root.getElementById(buttonId).disabled).toBeTruthy();
   });
 
+  it('button can be set to loading state', () => {
+    component.setAttribute('state', 'loading');
+    expect(root.getElementById('loading-container')).toBeTruthy();
+  });
+
   it('triggers an onClick event when clicked', (done) => {
     const button = root.querySelector('button');
     component.addEventListener('onClick', (event) => {

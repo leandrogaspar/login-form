@@ -2,10 +2,19 @@ import Component from '../component';
 import styles from './ol-button.scss';
 
 export default class OlButton extends Component {
-  static get observedAttributes() { return ['buttonId', 'disabled', 'label']; }
+  static get observedAttributes() { return ['buttonId', 'disabled', 'label', 'state']; }
 
   template() {
-    return `<button id="${this.buttonId}" class="button" ${this.disabled}>${this.label}</button>`;
+    if (this.state === 'loading') {
+      return `
+      <div id="loading-container" class="loading-button">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>`;
+    }
+    return `
+      <button id="${this.buttonId}" class="button ${this.state}" ${this.disabled}>${this.label}</button>`;
   }
 
   styles() {
@@ -13,6 +22,8 @@ export default class OlButton extends Component {
   }
 
   onConnected() {
+    if (this.isLoading()) { return; }
+
     // Create references to our element
     this.buttonElement = this.shadowRoot.querySelector('button');
 
@@ -25,11 +36,17 @@ export default class OlButton extends Component {
     this.dispatchEvent(new CustomEvent('onClick', { detail: this.buttonId }));
   }
 
+  isLoading() {
+    return this.state === 'loading';
+  }
+
   get buttonId() { return this.getAttribute('buttonId'); }
 
   get label() { return this.getAttribute('label'); }
 
   get disabled() { return this.getAttribute('disabled') || ''; }
+
+  get state() { return this.getAttribute('state') || ''; }
 }
 
 customElements.define('ol-button', OlButton);
