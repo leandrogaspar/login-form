@@ -47,8 +47,22 @@ describe('ol-password-strength', () => {
     expect(root.querySelector('input').classList.contains('invalid')).toBeFalsy();
   });
 
-  it('must have a "Senha" label', () => {
+  it('must have the label text', () => {
     expect(root.querySelector('label').textContent).toBe('Senha');
+  });
+
+  it('password input can be disabled using the "disabled" attribute', () => {
+    component = fixture('<ol-password-strength disabled="disabled"></ol-password-strength>');
+    root = component.shadowRoot;
+    expect(root.querySelector('input').disabled).toBeTruthy();
+  });
+
+  it('input value is preserved if something trigger a change', () => {
+    const inputElement = root.querySelector('input');
+    inputElement.value = 'Abcd';
+    inputElement.dispatchEvent(new CustomEvent('change', {}));
+    component.setAttribute('disabled', 'disabled');
+    expect(root.querySelector('input').value).toBe('Abcd');
   });
 
   describe('valid password', () => {

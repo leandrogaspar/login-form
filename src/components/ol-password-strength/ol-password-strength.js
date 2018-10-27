@@ -2,11 +2,18 @@ import Component from '../component';
 import styles from './ol-password-strength.scss';
 
 export default class OlPasswordStrength extends Component {
+  constructor() {
+    super();
+    this.value = '';
+  }
+
+  static get observedAttributes() { return ['disabled']; }
+
   template() {
     return `
       <div class="form-row">
         <label id="password-strength-label" for="password-strength-input" class="label">Senha</label>
-        <input type="password" name="name" id="password-strength-input" class="input">
+        <input type="password" name="name" id="password-strength-input" class="input" ${this.disabled} value="${this.value}">
       </div>
       <div class="indicator-row">
         <div id="indicator-1" class="indicator"></div>
@@ -53,11 +60,13 @@ export default class OlPasswordStrength extends Component {
     this.hasUpperCase = false;
     this.hasNumber = false;
     this.inValidFieldsCount = 3;
+
+    if (this.dirty) {
+      this.updateComponent();
+    }
   }
 
   onInputChange() {
-    // First do our validation then update the component
-    this.validatePassword();
     this.updateComponent();
 
     // Dispatch the change as our custom event
@@ -67,6 +76,18 @@ export default class OlPasswordStrength extends Component {
         isValid: this.inValidFieldsCount === 0,
       },
     }));
+  }
+
+  updateComponent() {
+    this.dirty = true;
+    this.value = this.inputElement.value;
+
+    // First do our validation
+    this.validatePassword();
+    // Update the component style
+    this.updateInputElement();
+    this.updateIndicatorsClasses();
+    this.updateRulesClasses();
   }
 
   validatePassword() {
@@ -86,12 +107,6 @@ export default class OlPasswordStrength extends Component {
     this.inValidFieldsCount = this.inValidFieldsCount - 1;
   }
 
-  updateComponent() {
-    this.updateInputElement();
-    this.updateIndicatorsClasses();
-    this.updateRulesClasses();
-  }
-
   updateInputElement() {
     this.inputElement.classList.remove('valid', 'invalid');
 
@@ -103,7 +118,6 @@ export default class OlPasswordStrength extends Component {
   }
 
   updateIndicatorsClasses() {
-    // Now set the classes again
     switch (this.inValidFieldsCount) {
       case 0:
         this.indicatorOne.className = 'indicator valid-indicator';
@@ -129,17 +143,19 @@ export default class OlPasswordStrength extends Component {
   }
 
   updateRulesClasses() {
-    this.ruleOne.className = this.getValidRule(this.hasSixChar);
-    this.ruleTwo.className = this.getValidRule(this.hasUpperCase);
-    this.ruleThree.className = this.getValidRule(this.hasNumber);
+    this.ruleOne.className = this.getRuleClass(this.hasSixChar);
+    this.ruleTwo.className = this.getRuleClass(this.hasUpperCase);
+    this.ruleThree.className = this.getRuleClass(this.hasNumber);
   }
 
-  getValidRule(valid) {
+  getRuleClass(valid) {
     if (valid) {
       return 'valid-rule';
     }
     return 'invalid-rule';
   }
+
+  get disabled() { return this.getAttribute('disabled') || ''; }
 }
 
 customElements.define('ol-password-strength', OlPasswordStrength);
