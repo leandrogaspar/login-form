@@ -7,6 +7,14 @@
 # The Most Amazing New Account Form Ever Made
 > Also (not)known as a simple Sign Up form using [Shadow DOM v1](https://developers.google.com/web/fundamentals/web-components/shadowdom) spec.
 
+## Live demo
+
+Want to see it in action? Go [here!](https://desolate-meadow-63118.herokuapp.com/).
+
+## Server
+
+The server code is in a separated repository. You can take a look [here](https://github.com/leandrogaspar/go-server).
+
 ## Getting started
 
 ## Installing
@@ -18,7 +26,7 @@ npm install
 npm run build
 ```
 
-You will find the build with all the needed files on the dist folder. After this you can either serve the files on a HTTP server or simply open the HTML with a browser.
+You will find the build with all the needed files on the dist folder. After this you can either serve the files on a [HTTP server](https://github.com/leandrogaspar/go-server) or simply open the HTML with a browser.
 
 ## Tests
 
