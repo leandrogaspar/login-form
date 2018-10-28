@@ -16,4 +16,8 @@ p {
   padding-left: 133px;
   padding-right: 133px;
   padding-bottom: 109px;
+
+  @media (max-width: $breakpoint-modal) {
+    padding: 20px;
+  }
 }

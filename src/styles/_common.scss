@@ -61,7 +61,10 @@ p {
 
 .modal {
   width: 100%;
-  max-width: 515px;
+  max-width: $modal-width;
+  max-height: 100vh;
+  overflow-y: auto;
+
   border: 3px solid $olist-lightest-grey;
   box-sizing: border-box;
   background-color: $olist-white;
@@ -76,4 +79,8 @@ p {
   @include align-items(center);
 
   padding: 60px 70px 48px 70px;
+
+  @media (max-width: $breakpoint-modal) {
+    padding: 20px;
+  }
 }
