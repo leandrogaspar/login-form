@@ -31,6 +31,7 @@ export default class OlNewAccount extends Component {
     this.isValidName = false;
     this.isValidEmail = false;
     this.isValidPassword = false;
+    this.isValidConfirm = false;
   }
 
 
@@ -74,11 +75,12 @@ export default class OlNewAccount extends Component {
     this.confirmPassword = this.shadowRoot.getElementById('confirm-password');
     this.submitButton = this.shadowRoot.getElementById('submit');
 
-    this.addValidityListener(this.confirmPassword, 'onChange', 'isValidPassword');
+    this.addValidityListener(this.confirmPassword, 'onChange', 'isValidConfirm');
     this.addValidityListener(this.email, 'onChange', 'isValidEmail');
     this.addValidityListener(this.name, 'onChange', 'isValidName');
 
     this.passwordStrength.addEventListener('onChange', (event) => {
+      this.isValidPassword = event.detail.isValid;
       const escapedValue = event.detail.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       this.confirmPassword.setAttribute('validator', `^${escapedValue}$`);
       this.updateForm();
@@ -120,7 +122,7 @@ export default class OlNewAccount extends Component {
   }
 
   isValidForm() {
-    return this.isValidName && this.isValidEmail && this.isValidPassword;
+    return this.isValidName && this.isValidEmail && this.isValidPassword && this.isValidConfirm;
   }
 }
 

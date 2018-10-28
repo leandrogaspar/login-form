@@ -53,4 +53,13 @@ describe('ol-new-account', () => {
 
     expect(root.getElementById('submit').getAttribute('state')).toBe('loading');
   });
+
+  it('the submit must be disabled even if the password does match but it is not valid', () => {
+    fillInput('name', 'Leandro Gaspar');
+    fillInput('email', 'leandro@gaspar.com');
+    fillInput('password-strength', 'abc123');
+    fillInput('confirm-password', 'abc123');
+
+    expect(root.getElementById('submit').getAttribute('disabled')).toBe('disabled');
+  });
 });
