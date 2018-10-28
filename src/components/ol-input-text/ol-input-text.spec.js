@@ -90,6 +90,15 @@ describe('ol-input-text', () => {
       expect(root.querySelector('input').value).toBe('Abcd');
     });
 
+    it('re-validate if attribute changes', () => {
+      inputElement.value = 'Abcd';
+      inputElement.dispatchEvent(new CustomEvent('change', {}));
+      component.setAttribute('disabled', 'sfnjaoifnsaf');
+      expect(root.querySelector('input').classList.contains('invalid')).toBeFalsy();
+      expect(root.querySelector('input').classList.contains('valid')).toBeTruthy();
+      expect(root.querySelector('input').value).toBe('Abcd');
+    });
+
     it('inputs change trigger the onChange event', (done) => {
       const input = root.querySelector('input');
       component.addEventListener('onChange', (event) => {

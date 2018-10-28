@@ -24,9 +24,14 @@ export default class OlInputText extends Component {
     // Now, listen to changes
     this.inputElement.addEventListener('change', this.onInputChange.bind(this));
     this.inputElement.addEventListener('keyup', this.onInputChange.bind(this));
+
+    if (this.dirty) {
+      this.updateInput();
+    }
   }
 
   updateInput() {
+    this.dirty = true;
     this.value = this.inputElement.value;
 
     this.valid = this.isValid();
