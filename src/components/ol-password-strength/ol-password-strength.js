@@ -108,12 +108,12 @@ export default class OlPasswordStrength extends Component {
   }
 
   updateInputElement() {
-    this.inputElement.classList.remove('valid', 'invalid');
+    this.inputElement.className = 'input';
 
     if (this.inValidFieldsCount === 0) {
-      this.inputElement.classList.add('valid');
+      this.inputElement.className = 'input valid';
     } else {
-      this.inputElement.classList.add('invalid');
+      this.inputElement.className = 'input invalid';
     }
   }
 
