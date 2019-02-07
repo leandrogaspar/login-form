@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/leandrogaspar/work-at-olist-front.svg?branch=master)](https://travis-ci.org/leandrogaspar/work-at-olist-front)
-[![dependencies Status](https://david-dm.org/leandrogaspar/work-at-olist-front/status.svg)](https://david-dm.org/leandrogaspar/work-at-olist-front)
-[![devDependencies Status](https://david-dm.org/leandrogaspar/work-at-olist-front/dev-status.svg)](https://david-dm.org/leandrogaspar/work-at-olist-front?type=dev)
-[![Maintainability](https://api.codeclimate.com/v1/badges/7560336c203482768061/maintainability)](https://codeclimate.com/github/leandrogaspar/work-at-olist-front/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/7560336c203482768061/test_coverage)](https://codeclimate.com/github/leandrogaspar/work-at-olist-front/test_coverage)
+[![Build Status](https://travis-ci.org/leandrogaspar/login-form.svg?branch=master)](https://travis-ci.org/leandrogaspar/login-form)
+[![dependencies Status](https://david-dm.org/leandrogaspar/login-form/status.svg)](https://david-dm.org/leandrogaspar/login-form)
+[![devDependencies Status](https://david-dm.org/leandrogaspar/login-form/dev-status.svg)](https://david-dm.org/leandrogaspar/login-form?type=dev)
+[![Maintainability](https://api.codeclimate.com/v1/badges/aab69ca2e6844c471b32/maintainability)](https://codeclimate.com/github/leandrogaspar/login-form/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/aab69ca2e6844c471b32/test_coverage)](https://codeclimate.com/github/leandrogaspar/login-form/test_coverage)
 
 # The Most Amazing New Account Form Ever Made
 > Also (not)known as a simple Sign Up form using [Shadow DOM v1](https://developers.google.com/web/fundamentals/web-components/shadowdom) spec.
