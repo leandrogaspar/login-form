@@ -2,7 +2,7 @@
 [![dependencies Status](https://david-dm.org/leandrogaspar/login-form/status.svg)](https://david-dm.org/leandrogaspar/login-form)
 [![devDependencies Status](https://david-dm.org/leandrogaspar/login-form/dev-status.svg)](https://david-dm.org/leandrogaspar/login-form?type=dev)
 [![Maintainability](https://api.codeclimate.com/v1/badges/aab69ca2e6844c471b32/maintainability)](https://codeclimate.com/github/leandrogaspar/login-form/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/aab69ca2e6844c471b32/test_coverage)](https://codeclimate.com/github/leandrogaspar/login-form/test_coverage)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/aab69ca2e6844c471b32/test_coverage)](https://codeclimate.com/github/leandrogaspar/login-form/test_coverage) [![Greenkeeper badge](https://badges.greenkeeper.io/leandrogaspar/login-form.svg)](https://greenkeeper.io/)
 
 # The Most Amazing New Account Form Ever Made
 > Also (not)known as a simple Sign Up form using [Shadow DOM v1](https://developers.google.com/web/fundamentals/web-components/shadowdom) spec.
