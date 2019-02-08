@@ -1,5 +1,5 @@
 {
-  "name": "work-at-olist-front",
+  "name": "login-form",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leandrogaspar/work-at-olist-front.git"
+    "url": "git+https://github.com/leandrogaspar/login-form.git"
   },
   "author": "Leandro Gaspar Scanavini",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leandrogaspar/work-at-olist-front/issues"
+    "url": "https://github.com/leandrogaspar/login-form/issues"
   },
-  "homepage": "https://github.com/leandrogaspar/work-at-olist-front#readme",
+  "homepage": "https://github.com/leandrogaspar/login-form#readme",
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
