@@ -1,4 +1,4 @@
-describe('ol-new-account', () => {
+describe('lf-new-account', () => {
   let component;
   let root;
 
@@ -10,12 +10,12 @@ describe('ol-new-account', () => {
   }
 
   beforeEach(() => {
-    component = fixture('<ol-new-account state="CREATING"></ol-new-account>');
+    component = fixture('<lf-new-account state="CREATING"></lf-new-account>');
     root = component.shadowRoot;
   });
 
   it('on the CREATING state component must have all the form elements', () => {
-    expect(root.querySelector('ol-logotype')).toBeTruthy();
+    expect(root.querySelector('lf-logotype')).toBeTruthy();
     expect(root.getElementById('name')).toBeTruthy();
     expect(root.getElementById('email')).toBeTruthy();
     expect(root.getElementById('password-strength')).toBeTruthy();
@@ -24,9 +24,9 @@ describe('ol-new-account', () => {
   });
 
   it('on the CREATED state component must have the success message', () => {
-    component = fixture('<ol-new-account state="CREATED"></ol-new-account>');
+    component = fixture('<lf-new-account state="CREATED"></lf-new-account>');
     root = component.shadowRoot;
-    expect(root.querySelector('ol-success-message')).toBeTruthy();
+    expect(root.querySelector('lf-success-message')).toBeTruthy();
   });
 
   it('the submit button must be disabled until the form is valid', () => {

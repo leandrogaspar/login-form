@@ -17,7 +17,7 @@ module.exports = function (config) {
     files: [
       'node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js',
       { pattern: 'test/helpers/*.js', watched: true },
-      { pattern: 'src/components/**/ol-*.js', watched: true },
+      { pattern: 'src/components/**/lf-*.js', watched: true },
     ],
 
 

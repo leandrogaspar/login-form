@@ -1,4 +1,4 @@
-describe('ol-input-text', () => {
+describe('lf-input-text', () => {
   let component;
   let root;
   let inputElement;
@@ -11,7 +11,7 @@ describe('ol-input-text', () => {
 
 
   beforeEach(() => {
-    component = fixture(`<ol-input-text name="${name}" type="${type}" label="${label}" validator="${validator}"></ol-input-text>`);
+    component = fixture(`<lf-input-text name="${name}" type="${type}" label="${label}" validator="${validator}"></lf-input-text>`);
     root = component.shadowRoot;
     inputElement = root.querySelector('input');
     labelElement = root.querySelector('label');
@@ -71,13 +71,13 @@ describe('ol-input-text', () => {
     });
 
     it('can be disabled using the "disabled" attribute', () => {
-      component = fixture(`<ol-input-text name="${name}" label="${label}" validator="${validator}" disabled="disabled"></ol-input-text>`);
+      component = fixture(`<lf-input-text name="${name}" label="${label}" validator="${validator}" disabled="disabled"></lf-input-text>`);
       root = component.shadowRoot;
       expect(root.getElementById(`${name}-input`).disabled).toBeTruthy();
     });
 
     it('can be disabled by setting the "disabled" attribute', () => {
-      component = fixture(`<ol-input-text name="${name}" label="${label}" validator="${validator}"></ol-input-text>`);
+      component = fixture(`<lf-input-text name="${name}" label="${label}" validator="${validator}"></lf-input-text>`);
       root = component.shadowRoot;
       component.setAttribute('disabled', 'disabled');
       expect(root.getElementById(`${name}-input`).disabled).toBeTruthy();

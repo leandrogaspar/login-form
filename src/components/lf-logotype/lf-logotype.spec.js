@@ -1,14 +1,14 @@
-describe('ol-logotype', () => {
+describe('lf-logotype', () => {
   let component;
   let root;
 
   beforeEach(() => {
-    component = fixture('<ol-logotype></ol-logotype>');
+    component = fixture('<lf-logotype></lf-logotype>');
     root = component.shadowRoot;
   });
 
   it('title should be olist', () => {
-    expect(root.querySelector('title').textContent).toBe('Olist');
+    expect(root.querySelector('title').textContent).toBe('Login Form Test');
   });
 
   it('svg width is equals to 88', () => {

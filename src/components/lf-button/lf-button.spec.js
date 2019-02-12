@@ -1,11 +1,11 @@
-describe('ol-button', () => {
+describe('lf-button', () => {
   let component;
   let root;
   const label = 'Hey this is a test';
   const buttonId = 'test-button';
 
   beforeEach(() => {
-    component = fixture(`<ol-button buttonId="${buttonId}" label="${label}"></ol-button>`);
+    component = fixture(`<lf-button buttonId="${buttonId}" label="${label}"></lf-button>`);
     root = component.shadowRoot;
   });
 
@@ -26,13 +26,13 @@ describe('ol-button', () => {
   });
 
   it('button can be disabled using the "disabled" attribute on the creation', () => {
-    component = fixture(`<ol-button buttonId="${buttonId}" label="${label}" disabled="disabled"></ol-button>`);
+    component = fixture(`<lf-button buttonId="${buttonId}" label="${label}" disabled="disabled"></lf-button>`);
     root = component.shadowRoot;
     expect(root.getElementById(buttonId).disabled).toBeTruthy();
   });
 
   it('button can be disabled by setting the "disabled" attribute', () => {
-    component = fixture(`<ol-button buttonId="${buttonId}" label="${label}"></ol-button>`);
+    component = fixture(`<lf-button buttonId="${buttonId}" label="${label}"></lf-button>`);
     root = component.shadowRoot;
     component.setAttribute('disabled', 'disabled');
     expect(root.getElementById(buttonId).disabled).toBeTruthy();

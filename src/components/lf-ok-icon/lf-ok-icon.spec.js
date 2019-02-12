@@ -1,9 +1,9 @@
-describe('ol-ok-icon', () => {
+describe('lf-ok-icon', () => {
   let component;
   let root;
 
   beforeEach(() => {
-    component = fixture('<ol-ok-icon></ol-ok-icon>');
+    component = fixture('<lf-ok-icon></lf-ok-icon>');
     root = component.shadowRoot;
   });
 

@@ -1,7 +1,7 @@
 import Component from '../component';
-import styles from './ol-password-strength.scss';
+import styles from './lf-password-strength.scss';
 
-export default class OlPasswordStrength extends Component {
+export default class LfPasswordStrength extends Component {
   constructor() {
     super();
     this.value = '';
@@ -158,4 +158,4 @@ export default class OlPasswordStrength extends Component {
   get disabled() { return this.getAttribute('disabled') || ''; }
 }
 
-customElements.define('ol-password-strength', OlPasswordStrength);
+customElements.define('lf-password-strength', LfPasswordStrength);

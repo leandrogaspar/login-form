@@ -1,7 +1,7 @@
 import Component from '../component';
-import styles from './ol-button.scss';
+import styles from './lf-button.scss';
 
-export default class OlButton extends Component {
+export default class LfButton extends Component {
   static get observedAttributes() { return ['buttonId', 'disabled', 'label', 'state']; }
 
   template() {
@@ -49,4 +49,4 @@ export default class OlButton extends Component {
   get state() { return this.getAttribute('state') || ''; }
 }
 
-customElements.define('ol-button', OlButton);
+customElements.define('lf-button', LfButton);

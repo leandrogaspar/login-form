@@ -1,7 +1,7 @@
 import Component from '../component';
-import styles from './ol-new-account.scss';
+import styles from './lf-new-account.scss';
 
-export default class OlNewAccount extends Component {
+export default class LfNewAccount extends Component {
   constructor() {
     super();
     this.resetForm();
@@ -43,19 +43,19 @@ export default class OlNewAccount extends Component {
   }
 
   createdTemplate() {
-    return '<ol-success-message title="Tudo certo" message="Verifique sua caixa de entrada para confirmar seu e-mail."></ol-success-message>';
+    return '<lf-success-message title="Tudo certo" message="Verifique sua caixa de entrada para confirmar seu e-mail."></lf-success-message>';
   }
 
   creatingTemplate() {
     return `
       <div class="modal" role="form">
-        <ol-logotype></ol-logotype>
+        <lf-logotype></lf-logotype>
         <h1 class="create-account-h1">Crie sua conta</h1>
-        <ol-input-text id="name" label="Nome completo" baseId="name" validator="^.{6,}$"></ol-input-text>
-        <ol-input-text id="email" label="E-mail" baseId="email" validator="^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$"></ol-input-text>
-        <ol-password-strength id="password-strength"></ol-password-strength>
-        <ol-input-text id="confirm-password" type="password" label="Confirme sua senha" baseId="confirmPassword" validator="."></ol-input-text>
-        <ol-button id="submit" label="Criar conta" buttonId="create-account" disabled="disabled"></ol-button>
+        <lf-input-text id="name" label="Nome completo" baseId="name" validator="^.{6,}$"></lf-input-text>
+        <lf-input-text id="email" label="E-mail" baseId="email" validator="^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$"></lf-input-text>
+        <lf-password-strength id="password-strength"></lf-password-strength>
+        <lf-input-text id="confirm-password" type="password" label="Confirme sua senha" baseId="confirmPassword" validator="."></lf-input-text>
+        <lf-button id="submit" label="Criar conta" buttonId="create-account" disabled="disabled"></lf-button>
       </div>
     `;
   }
@@ -126,4 +126,4 @@ export default class OlNewAccount extends Component {
   }
 }
 
-customElements.define('ol-new-account', OlNewAccount);
+customElements.define('lf-new-account', LfNewAccount);

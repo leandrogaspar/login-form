@@ -1,11 +1,11 @@
-describe('ol-success-message', () => {
+describe('lf-success-message', () => {
   let component;
   let root;
   const title = 'Hey this is a test';
   const message = 'Verifique sua caixa de entrada para confirmar seu e-mail.';
 
   beforeEach(() => {
-    component = fixture(`<ol-success-message title="${title}" message="${message}"></ol-success-message>`);
+    component = fixture(`<lf-success-message title="${title}" message="${message}"></lf-success-message>`);
     root = component.shadowRoot;
   });
 

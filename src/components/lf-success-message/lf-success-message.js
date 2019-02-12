@@ -1,14 +1,14 @@
 import Component from '../component';
-import styles from './ol-success-message.scss';
+import styles from './lf-success-message.scss';
 
-export default class OlSuccessMessage extends Component {
+export default class LfSuccessMessage extends Component {
   static get observedAttributes() { return ['title', 'message']; }
 
   template() {
     return `
       <div class="modal">
-        <ol-logotype></ol-logotype>
-        <ol-ok-icon></ol-ok-icon>
+        <lf-logotype></lf-logotype>
+        <lf-ok-icon></lf-ok-icon>
         <h1>${this.title}</h1>
         <p>${this.message}</p>
       </div>
@@ -24,4 +24,4 @@ export default class OlSuccessMessage extends Component {
   get message() { return this.getAttribute('message'); }
 }
 
-customElements.define('ol-success-message', OlSuccessMessage);
+customElements.define('lf-success-message', LfSuccessMessage);

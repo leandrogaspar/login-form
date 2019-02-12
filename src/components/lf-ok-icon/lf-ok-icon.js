@@ -1,6 +1,6 @@
 import Component from '../component';
 
-export default class OlOkIcon extends Component {
+export default class LfOkIcon extends Component {
   template() {
     return `
     <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,4 +11,4 @@ export default class OlOkIcon extends Component {
   }
 }
 
-customElements.define('ol-ok-icon', OlOkIcon);
+customElements.define('lf-ok-icon', LfOkIcon);

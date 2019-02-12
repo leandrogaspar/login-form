@@ -1,4 +1,4 @@
-describe('ol-password-strength', () => {
+describe('lf-password-strength', () => {
   let component;
   let root;
 
@@ -31,7 +31,7 @@ describe('ol-password-strength', () => {
   }
 
   beforeEach(() => {
-    component = fixture('<ol-password-strength></ol-password-strength>');
+    component = fixture('<lf-password-strength></lf-password-strength>');
     root = component.shadowRoot;
   });
 
@@ -52,7 +52,7 @@ describe('ol-password-strength', () => {
   });
 
   it('password input can be disabled using the "disabled" attribute', () => {
-    component = fixture('<ol-password-strength disabled="disabled"></ol-password-strength>');
+    component = fixture('<lf-password-strength disabled="disabled"></lf-password-strength>');
     root = component.shadowRoot;
     expect(root.querySelector('input').disabled).toBeTruthy();
   });

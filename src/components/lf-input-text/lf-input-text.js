@@ -1,7 +1,7 @@
 import Component from '../component';
-import styles from './ol-input-text.scss';
+import styles from './lf-input-text.scss';
 
-export default class OlInputText extends Component {
+export default class LfInputText extends Component {
   static get observedAttributes() { return ['name', 'disabled', 'label', 'validator', 'type']; }
 
   template() {
@@ -81,4 +81,4 @@ export default class OlInputText extends Component {
   get type() { return this.getAttribute('type') || 'text'; }
 }
 
-customElements.define('ol-input-text', OlInputText);
+customElements.define('lf-input-text', LfInputText);

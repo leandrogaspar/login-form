@@ -1,10 +1,10 @@
 import Component from '../component';
 
-export default class OlLogotype extends Component {
+export default class LfLogotype extends Component {
   template() {
     return `
     <svg width="88" height="35" viewBox="0 0 88 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <title>Olist</title>
+      <title>Login Form Test</title>
       <path d="M12.6772 9.73753C5.28215 9.73753 0 15.2493 0 22.3688C0 29.4882 5.28215 35 12.6772 35C20.0262 35 25.3084 29.4882 25.3084 22.3688C25.3084 15.2493 20.0262 9.73753 12.6772 9.73753ZM18.6483 22.3688C18.6483 26.3189 16.2598 29.3963 12.6772 29.3963C9.09449 29.3963 6.6601 26.3189 6.6601 22.3688C6.6601 18.4186 9.09449 15.3412 12.6772 15.3412C16.2598 15.3412 18.6483 18.4186 18.6483 22.3688Z" fill="#0C29D0"/>
       <path d="M35.6057 0H29.0834V34.4488H35.6057V0Z" fill="#0C29D0"/>
       <path d="M47.5605 34.4488V10.2887H41.0382V34.4488H47.5605ZM47.5605 6.93569V1.37795H41.0382V6.93569H47.5605Z" fill="#0C29D0"/>
@@ -14,4 +14,4 @@ export default class OlLogotype extends Component {
   }
 }
 
-customElements.define('ol-logotype', OlLogotype);
+customElements.define('lf-logotype', LfLogotype);
