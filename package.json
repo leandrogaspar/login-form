@@ -29,7 +29,7 @@
     "css-loader": "^3.0.0",
     "eslint": "^6.0.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-import": "^2.19.0",
     "file-loader": "^4.0.0",
     "jasmine-core": "^3.2.1",
     "karma": "^4.1.0",
